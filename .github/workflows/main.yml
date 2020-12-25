@@ -1,0 +1,24 @@
+name: Update Telegram Stats Stickers
+
+on:
+  schedule:
+    - cron: '* 5 * * *'
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '12'
+    - run: npm install
+    - run: npm run build
+    - uses: underoot/telegram-sticker-action@v1
+      with:
+        stickerSet: 'Stats_By_LeninMolodoyBot'
+        stickerFile: 'dist/sticker.svg'
+        emoji: '📊'
+        ownerId: ${{ secrets.TELEGRAM_STICKERPACK_OWNER }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        title: 'Статистика Фронтенд Юности'
