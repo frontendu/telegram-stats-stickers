@@ -1,4 +1,4 @@
-# Telegram Stats Sticker Time
+# Telegram Stats Sticker
 
 Retrieve and set as telegram stickers different statistics from public channels.
 
